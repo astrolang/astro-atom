@@ -1,5 +1,5 @@
 {
-  "name": "astro",
+  "name": "ide-astro",
   "version": "0.1.140",
   "description": "Language support for Astro in Atom",
   "engines": {
