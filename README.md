@@ -1,6 +1,6 @@
 # Astro language support for Atom
 
-An Atom ppackage with rich support for the Astro language. Expected features include linting, debugging, IntelliSense, code navigation, code formatting, refactoring, unit tests, snippets, and more!
+An Atom package with rich support for the Astro language. Expected features include linting, debugging, IntelliSense, code navigation, code formatting, refactoring, unit tests, snippets, and more!
 
 ![astro screenshot](https://github.com/astrolang/astro/blob/ch-implement-packrat-parser-156977411/media/images/astro-syntax.png?raw=true)
 
