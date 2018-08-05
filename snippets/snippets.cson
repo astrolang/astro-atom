@@ -1,37 +1,57 @@
 '.source.astro':
-  'Function':
-    'prefix': 'fun'
-    'body': 'fun $1(params):'
-    'description': 'Defines a function with the specified parameters.'
-  'Let':
-    'prefix': 'lt'
-    'body': 'let $1 = $2'
-    'description': 'Declares a block scope local variable.'
-  'Abstract':
-    'prefix': 'abst'
-    'body': 'abst $1 = $2'
-    'description': 'Declares a global scope abstract variable.'
-  'Type':
-    'prefix': 'type'
-    'body': 'type ${1}(params):'
-    'description': 'Defines a type with the specified parameters.'
-  'Print':
-    'prefix': 'print'
-    'body': 'print("$1")'
-    'description': 'Outputs a message.'
-  'For':
-    'prefix': 'for'
-    'body': 'for $2 in $1:'
-    'description': 'Creates a loop that consists of one expression.'
-  'For Where':
-    'prefix': 'forw'
-    'body': 'for x in $1 where z:'
-    'description': 'Creates a loop that consists of one expression and a "where" clause.'
-  'Return True':
-    'prefix': 'rt'
-    'body': 'return true'
-    'description': 'Returns true.'
-  'Return False':
-    'prefix': 'rf'
-    'body': 'return false'
-    'description': 'Returns false.'
+    'Function':
+        'prefix': 'fun'
+        'body': 'fun $1($2):'
+        'description': 'Defines a function with the specified parameters.'
+    'Variable':
+        'prefix': 'var'
+        'body': 'var $1 = $2'
+        'description': 'Declares a variable.'
+    'Constant':
+        'prefix': 'let'
+        'body': 'let $1 = $2'
+        'description': 'Declares a constant.'
+    'Type':
+        'prefix': 'typ'
+        'body': 'type $1($2):'
+        'description': 'Defines a type with the specified parameters.'
+    'Print':
+        'prefix': 'pri'
+        'body': 'print(\'$1\')'
+        'description': 'Creates a print statement.'
+    'If':
+        'prefix': 'if'
+        'body': 'if $1:'
+        'description': 'Creates an if expression.'
+    'Elif':
+        'prefix': 'eli'
+        'body': 'elif $1:'
+        'description': 'Creates an elif expression.'
+    'Else':
+        'prefix': 'els'
+        'body': 'else $1:'
+        'description': 'Creates an else expression.'
+    'If-Else':
+        'prefix': 'ife'
+        'body': 'if $1: else: $3'
+        'description': 'Creates an if/else expression.'
+    'While':
+        'prefix': 'whi'
+        'body': 'while $1:'
+        'description': 'Creates a while loop.'
+    'For':
+        'prefix': 'for'
+        'body': 'for $1 in $2:'
+        'description': 'Creates a for loop.'
+    'If-Where':
+        'prefix': 'ifw'
+        'body': 'if $1 where $2:'
+        'description': 'Creates an if expression with a "where" clause.'
+    'While-Where':
+        'prefix': 'whiw'
+        'body': 'while $1 in $2 where $3:'
+        'description': 'Creates a while loop with a "where" clause.'
+    'For-Where':
+        'prefix': 'forw'
+        'body': 'for $1 in $2 where $3:'
+        'description': 'Creates a for loop with a "where" clause.'
