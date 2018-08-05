@@ -27,7 +27,7 @@ None for now.
 ## Release Notes
 ### 0.1.140
 
-- Add syntax highlighting and code snippets
+- Added syntax highlighting and code snippets
 
 -----------------------------------------------------------------------------------------------------------
 
