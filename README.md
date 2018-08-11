@@ -25,7 +25,7 @@ None for now.
 None for now.
 
 ## Release Notes
-### 0.1.140
+### 0.1.14
 
 - Added syntax highlighting and code snippets
 
