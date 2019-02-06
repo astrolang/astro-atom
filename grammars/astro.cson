@@ -1,18 +1,12 @@
 scopeName: 'source.astro'
 name: 'Astro'
-fileTypes: [
-		'astro',
-    'ast'
-]
+fileTypes: ['astro', 'ast']
 patterns: [
 	{
 		include: "#non_astro"
 	}
 	{
 		include: "#numbers"
-	}
-	{
-		include: "#macros"
 	}
 	{
 		include: "#multiline_comments"
@@ -51,6 +45,9 @@ patterns: [
 		include: "#single_line_strings"
 	}
 	{
+		include: "#chars"
+	}
+	{
 		include: "#regex"
 	}
 	{
@@ -85,21 +82,14 @@ repository:
 				name: "constant.numeric.astro"
 			}
 		]
-	macros:
-		patterns: [
-			{
-				match: "@(?:[A-Za-z_][_A-Za-z0-9]*)|@\\(.+\\)"
-				name: "support.function.macro.astro"
-			}
-		]
 	multiline_comments:
 		patterns: [
 			{
-				begin: "#-"
+				begin: "/\\*"
 				beginCaptures:
 					"0":
 						name: "punctuation.definition.comment.begin.astro"
-				end: "-#"
+				end: "\\*/"
 				endCaptures:
 					"0":
 						name: "punctuation.definition.comment.end.astro"
@@ -114,7 +104,7 @@ repository:
 	single_line_comments:
 		patterns: [
 			{
-				begin: "#"
+				begin: "//"
 				beginCaptures:
 					"0":
 						name: "punctuation.definition.comment.astro"
@@ -136,24 +126,22 @@ repository:
 	dot_notation:
 		patterns: [
 			{
-				match: "(?<!\\.)((\\.|:)[A-Za-z_][_A-Za-z0-9]*!?(\\.(?![.A-Za-z_0-9]))?)"
-				captures:
-					"1":
-						name: "variable.language.astro"
+				match: "(?<!\\.)(\\.[A-Za-z_][_A-Za-z0-9]*!?(\\.(?![.A-Za-z_0-9]))?)|(?<=,)(\\s*:[A-Za-z_][_A-Za-z0-9]*!?)"
+				name: "variable.language.astro"
 			}
 		]
 	keywords:
 		patterns: [
 			{
-				match: "\\b(?:true|false|nil|NaN)\\b"
+				match: "\\b(?:true|false|none|NaN)\\b"
 				name: "constant.language.astro"
 			}
 			{
-				match: "\\b(?:try!|(for|end|if|\\?|else|elif|async|await|return|delegate|yield|from|while|do|loop|try|ensure|raise|continue|break|fallthrough|pass|except)\\b)"
+				match: "\\b(?:for|end|if|match|\\?|else|elif|async|await|return|delegate|yield|from|while|do|loop|continue|break|fallthrough|pass|except)\\b"
 				name: "keyword.control.astro"
 			}
 			{
-				match: "\\b(?:type|fun|let|var|import|export)\\b"
+				match: "\\b(?:type|enum|fun|macro|let|var|priv|import|export)\\b"
 				name: "storage.modifier.astro"
 			}
 		]
@@ -167,11 +155,11 @@ repository:
 	function_calls:
 		patterns: [
 			{
-				match: "([A-Za-z_][_A-Za-z0-9]*)!?\\.?(?=(\\{.+\\}\\s*)?\\()"
+				match: "([A-Za-z_][_A-Za-z0-9]*)\\.?(?=(\\[.+\\]\\s*)?\\()"
 				name: "entity.name.function.astro"
 			}
 			{
-				match: ":(?=\\()"
+				match: "(?<=,)\\s*:(?=\\()"
 				name: "entity.name.function.astro"
 			}
 		]
@@ -185,7 +173,7 @@ repository:
 	command_notation:
 		patterns: [
 			{
-				match: "(?<!let |var |import )(\\b[a-zA-Z_][A-Za-z_0-9]*!?)\\s+(?=[A-Za-z_0-9]+|\"|'|`|@|\\$|\\{|\\[|\\()(?!\\b(and|or|not|in|is|mod|where|iso|ref|const|as|typeof)\\b)"
+				match: "(?<!let |var |import )(\\b[a-zA-Z_][A-Za-z_0-9]*!?)\\s+(?=[A-Za-z_0-9]+|\"|'|`|(\\|\\|)|@|:|\\[|\\()(?!\\b(and|or|not|in|is|mod|where|iso|ref|const|as|typeof)\\b)"
 				name: "entity.name.function.astro"
 			}
 		]
@@ -281,16 +269,23 @@ repository:
 					}
 				]
 			}
+		]
+	chars:
+		patterns: [
 			{
-				match: "\\$[A-Za-z0-9_]+"
-				name: "constant.character.escape.astro"
+				match: "`.`"
+				name: "string.quoted.astro"
 			}
 		]
 	regex:
 		patterns: [
 			{
-				begin: "`"
-				end: "`"
+				begin: "\\|\\|"
+				beginCaptures:
+ 					"0": name: "punctuation.definition.regexp.begin.astro"
+				end: "\\|\\|"
+				endCaptures:
+					"0": name: "punctuation.definition.regexp.end.astro"
 				name: "string.regexp.astro"
 				patterns: [
 					{
@@ -309,7 +304,7 @@ repository:
 	operators:
 		patterns: [
 			{
-				match: "\\.?(=|\\||\\&|\\>|\\<|!|\\+|-|\\*|\\/|\\^|%|\\?|≥|≤|≠|≈|×|±|÷)+|\\b(and|or|not|in|mod|typeof)\\b"
+				match: "\\.?(>:|<:|::|=|\\||\\&|\\>|\\<|!|\\+|-|\\*|\\/|\\^|%|\\?|≥|≤|≠|≈|×|±|÷)+|\\b(and|or|not|in|mod|typeof)\\b"
 				name: "keyword.operator.astro"
 			}
 		]
